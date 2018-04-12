@@ -1,0 +1,36 @@
+{
+  "name": "@xsin/fs",
+  "version": "1.0.0",
+  "description": "useful file system utility",
+  "main": "index.js",
+  "scripts": {
+    "test": "ava --serial test/**/*.test.js"
+  },
+  "keywords": [
+    "fs",
+    "fs-extra",
+    "@xsin/fs"
+  ],
+  "author": "mamboer",
+  "license": "MIT",
+  "devDependencies": {
+    "ava": "^0.25.0",
+    "babel-cli": "^6.26.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-register": "^6.26.0",
+    "eslint": "^4.19.1"
+  },
+  "ava": {
+    "babel": "inherit",
+    "require": [
+      "babel-register"
+    ]
+  },
+  "dependencies": {
+    "find-up": "^2.1.0",
+    "fs-extra": "^5.0.0",
+    "ignore": "^3.3.7",
+    "lodash": "^4.17.5"
+  }
+}
