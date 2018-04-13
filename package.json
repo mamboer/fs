@@ -4,7 +4,9 @@
   "description": "useful file system utility",
   "main": "index.js",
   "scripts": {
-    "test": "ava --serial test/**/*.test.js"
+    "test": "ava --serial test/**/*.test.js",
+    "test1": "ava --watch --serial test/**/*.test.js",
+    "debug": "node --harmony --inspect-brk test/debugs/dir.debug.js"
   },
   "keywords": [
     "fs",

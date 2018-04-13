@@ -5,7 +5,6 @@ import {merge, map, filter} from 'lodash'
 import {fn0, fn1, fn2} from './dummy'
 import consts from './consts'
 import {backslashToSlash, test} from './str';
-import {isRegex} from './regex'
 import Ignore from './ignore'
 
 /**
@@ -20,33 +19,31 @@ import Ignore from './ignore'
  * @param {Number} opts.maxLevel the maximum level of the down-walking
  * @param {String} opts.gitignore apply the nearest gitignore patterns when walking
  */
-async function walk (
-  dir,
-  {
-    includes = fn1,
-    excludes = fn0,
-    onStep = fn2,
-    ignoreNotAccessible = true,
-    normalizePath = true,
-    maxLevel = -1,
-    gitignore = '.gitignore'
-  },
-  level = 0
-) {
+async function walk (dir, opts, level = 0) {
   assert.ok(!!dir, `The 'dir' parameter must be provided.`)
 
+  opts = merge({
+    includes: fn1,
+    excludes: fn0,
+    onStep: fn2,
+    ignoreNotAccessible: true,
+    normalizePath: true,
+    maxLevel: -1,
+    gitignore: '.gitignore'
+  }, opts || {})
+
   // exclusion
-  if (test(dir, excludes)) return null
+  if (test(dir, opts.excludes)) return null
   // inclusion
-  if (!test(dir, includes)) return null
+  if (!test(dir, opts.includes)) return null
   // gitignore
-  if (gitignore && Ignore.isIgnore(dir, gitignore)) return null
+  if (opts.gitignore && Ignore.isIgnore(dir, opts.gitignore)) return null
   // level limitation
-  if (maxLevel && level > maxLevel) return null
+  if ((opts.maxLevel > -1) && (level > opts.maxLevel)) return null
 
   let item = {
     name: basename(dir),
-    path: normalizePath ? backslashToSlash(dir) : dir
+    path: opts.normalizePath ? backslashToSlash(dir) : dir
   }
 
   let stats = null
@@ -54,7 +51,7 @@ async function walk (
   try {
     stats = await stat(dir)
   } catch (e) {
-    if (ignoreNotAccessible) {
+    if (opts.ignoreNotAccessible) {
       return null
     }
     throw e
@@ -67,7 +64,7 @@ async function walk (
       size: stats.size,
       level
     })
-    return onStep.call(stats, item)
+    return opts.onStep.call(stats, item)
   }
 
   let dirData = {}
@@ -76,7 +73,7 @@ async function walk (
       // !notice
       dirData = await readdir(dir)
     } catch (ex) {
-      if (ex.code === consts.EACCES && ignoreNotAccessible) {
+      if (ex.code === consts.EACCES && opts.ignoreNotAccessible) {
         dirData = null
       } else {
         throw ex
@@ -88,11 +85,14 @@ async function walk (
       size: stats.size,
       level,
       children: filter(
-        map(dirData, child => await walk(join(dir, child), {includes, excludes, onStep, ignoreNotAccessible, normalizePath, maxLevel}, ++level)),
+        map(
+          dirData,
+          async child => await walk(join(dir, child), opts, ++level)
+        ),
         item1 => !!item1
       )
     })
-    return onStep.call(stats, item)
+    return opts.onStep.call(stats, item)
   }
 
   // for devices, FIFO and sockets, we just ignore them
@@ -111,33 +111,31 @@ async function walk (
  * @param {Number} opts.maxLevel the maximum level of the down-walking
  * @param {String} opts.gitignore apply the nearest gitignore patterns when walking
  */
-function walkSync (
-  dir,
-  {
-    includes = fn1,
-    excludes = fn0,
-    onStep = fn2,
-    ignoreNotAccessible = true,
-    normalizePath = true,
-    maxLevel = -1,
-    gitignore = '.gitignore'
-  },
-  level = 0
-) {
+function walkSync (dir, opts, level = 0) {
   assert.ok(!!dir, `The 'dir' parameter must be provided.`)
 
+  opts = merge({
+    includes: fn1,
+    excludes: fn0,
+    onStep: fn2,
+    ignoreNotAccessible: true,
+    normalizePath: true,
+    maxLevel: -1,
+    gitignore: '.gitignore'
+  }, opts || {})
+
   // exclusion
-  if (test(dir, excludes)) return null
+  if (test(dir, opts.excludes)) return null
   // inclusion
-  if (!test(dir, includes)) return null
+  if (!test(dir, opts.includes)) return null
   // gitignore
-  if (gitignore && Ignore.isIgnore(dir, gitignore)) return null
+  if (opts.gitignore && Ignore.isIgnore(dir, opts.gitignore)) return null
   // level limitation
-  if (maxLevel && level > maxLevel) return null
+  if ((opts.maxLevel > -1) && (level > opts.maxLevel)) return null
 
   let item = {
     name: basename(dir),
-    path: normalizePath ? backslashToSlash(dir) : dir
+    path: opts.normalizePath ? backslashToSlash(dir) : dir
   }
 
   let stats = null
@@ -145,7 +143,7 @@ function walkSync (
   try {
     stats = statSync(dir)
   } catch (e) {
-    if (ignoreNotAccessible) {
+    if (opts.ignoreNotAccessible) {
       return null
     }
     throw e
@@ -158,7 +156,7 @@ function walkSync (
       size: stats.size,
       level
     })
-    return onStep.call(stats, item)
+    return opts.onStep.call(stats, item)
   }
 
   let dirData = {}
@@ -167,7 +165,7 @@ function walkSync (
       // !notice
       dirData = readdirSync(dir)
     } catch (ex) {
-      if (ex.code === consts.EACCES && ignoreNotAccessible) {
+      if (ex.code === consts.EACCES && opts.ignoreNotAccessible) {
         dirData = null
       } else {
         throw ex
@@ -179,11 +177,14 @@ function walkSync (
       size: stats.size,
       level,
       children: filter(
-        map(dirData, child => walk(join(dir, child), {includes, excludes, onStep, ignoreNotAccessible, normalizePath, maxLevel}, ++level)),
+        map(
+          dirData,
+          child => walk(join(dir, child), opts, ++level)
+        ),
         item1 => !!item1
       )
     })
-    return onStep.call(stats, item)
+    return opts.onStep.call(stats, item)
   }
 
   // for devices, FIFO and sockets, we just ignore them
@@ -201,32 +202,25 @@ function walkSync (
  * @param {Boolean} opts.normalizePath normalize the path, convert the windows style to the linux one
  * @param {Number} opts.maxLevel the maximum level of the down-walking
  */
-async function flatten (
-  dir,
-  {
-    includes = fn1,
-    excludes = fn0,
-    onStep = fn2,
-    ignoreNotAccessible = true,
-    normalizePath = true,
-    maxLevel = -1,
-    gitignore = '.gitignore'
-  },
-  level = 0
-) {
+async function flatten (dir, opts, level = 0) {
+
+  opts = merge({
+    includes: fn1,
+    excludes: fn0,
+    onStep: fn2,
+    ignoreNotAccessible: true,
+    normalizePath: true,
+    maxLevel: -1,
+    gitignore: '.gitignore'
+  }, opts || {})
+
   let items = []
-  let onStep1 = function (item) {
+  let onStep = opts.onStep
+  opts.onStep = function (item) {
     item = onStep.call(this, item)
     items.push(item)
   }
-  await walk(dir, {
-    includes,
-    excludes,
-    onStep: onStep1,
-    ignoreNotAccessible,
-    normalizePath,
-    maxLevel
-  }, level)
+  await walk(dir, opts, level)
 
   return items
 }
@@ -242,32 +236,25 @@ async function flatten (
  * @param {Boolean} opts.normalizePath normalize the path, convert the windows style to the linux one
  * @param {Number} opts.maxLevel the maximum level of the down-walking
  */
-function flattenSync (
-  dir,
-  {
-    includes = fn1,
-    excludes = fn0,
-    onStep = fn2,
-    ignoreNotAccessible = true,
-    normalizePath = true,
-    maxLevel = -1,
-    gitignore = '.gitignore'
-  },
-  level = 0
-) {
+function flattenSync (dir, opts, level = 0) {
+
+  opts = merge({
+    includes: fn1,
+    excludes: fn0,
+    onStep: fn2,
+    ignoreNotAccessible: true,
+    normalizePath: true,
+    maxLevel: -1,
+    gitignore: '.gitignore'
+  }, opts || {})
+
   let items = []
-  let onStep1 = function (item) {
+  let onStep = opts.onStep
+  opts.onStep = function (item) {
     item = onStep.call(this, item)
     items.push(item)
   }
-  walkSync(dir, {
-    includes,
-    excludes,
-    onStep: onStep1,
-    ignoreNotAccessible,
-    normalizePath,
-    maxLevel
-  }, level)
+  walkSync(dir, opts, level)
 
   return items
 }
