@@ -11,13 +11,14 @@ import Ignore from './ignore'
  * walk a directory recursively and return a json tree
  * @param {String} dir directory
  * @param {Object} opts options
- * @param {RegExp|Array<RegExp>|Function} opts.includes include regex or function
- * @param {RegExp|Array<RegExp>|Function} opts.excludes exclude regex or function
+ * @param {RegExp|Array<RegExp>|Function} opts.includes apply including regex or function on both directory and file
+ * @param {RegExp|Array<RegExp>|Function} opts.excludes apply excluding regex or function on both directory and file
  * @param {Function} opts.onStep callback for every single walking step
  * @param {Boolean} opts.ignoreNotAccessible ignore the none-accessible directory or file
  * @param {Boolean} opts.normalizePath normalize the path, convert the windows style to the linux one
  * @param {Number} opts.maxLevel the maximum level of the down-walking
- * @param {String} opts.gitignore apply the nearest gitignore patterns when walking
+ * @param {String|Boolean} opts.gitignore apply the nearest gitignore patterns when walking
+ * @param {RegExp} opts.extensions apply extension regex on file
  */
 async function walk (dir, opts, level = 0) {
   assert.ok(!!dir, `The 'dir' parameter must be provided.`)
@@ -29,7 +30,8 @@ async function walk (dir, opts, level = 0) {
     ignoreNotAccessible: true,
     normalizePath: true,
     maxLevel: -1,
-    gitignore: '.gitignore'
+    gitignore: '.gitignore',
+    extensions: null
   }, opts || {})
 
   // exclusion
@@ -58,6 +60,7 @@ async function walk (dir, opts, level = 0) {
   }
 
   if (stats.isFile()) {
+    if (opts.extensions && !opts.extensions.test(dir)) return null
     item = merge(item, {
       type: consts.FILE,
       extension: extname(dir).toLowerCase(),
@@ -80,18 +83,20 @@ async function walk (dir, opts, level = 0) {
       }
     }
     if (dirData === null) return null
+
     item = merge(item, {
       type: consts.DIRECTORY,
       size: stats.size,
       level,
       children: filter(
-        map(
+        await Promise.all(map(
           dirData,
-          async child => await walk(join(dir, child), opts, ++level)
-        ),
+          child => walk(join(dir, child), opts, level + 1)
+        )),
         item1 => !!item1
       )
     })
+    // item.size = item.children.reduce((prev, cur) => prev + cur.size, 0)
     return opts.onStep.call(stats, item)
   }
 
@@ -103,13 +108,14 @@ async function walk (dir, opts, level = 0) {
  * walk a directory recursively and return a json tree
  * @param {String} dir directory
  * @param {Object} opts options
- * @param {RegExp|Array<RegExp>|Function} opts.includes include regex or function
- * @param {RegExp|Array<RegExp>|Function} opts.excludes exclude regex or function
+ * @param {RegExp|Array<RegExp>|Function} opts.includes apply including regex or function on both directory and file
+ * @param {RegExp|Array<RegExp>|Function} opts.excludes apply excluding regex or function on both directory and file
  * @param {Function} opts.onStep callback for every single walking step
  * @param {Boolean} opts.ignoreNotAccessible ignore the none-accessible directory or file
  * @param {Boolean} opts.normalizePath normalize the path, convert the windows style to the linux one
  * @param {Number} opts.maxLevel the maximum level of the down-walking
  * @param {String} opts.gitignore apply the nearest gitignore patterns when walking
+ * @param {RegExp} opts.extensions apply extension regex on file
  */
 function walkSync (dir, opts, level = 0) {
   assert.ok(!!dir, `The 'dir' parameter must be provided.`)
@@ -121,7 +127,8 @@ function walkSync (dir, opts, level = 0) {
     ignoreNotAccessible: true,
     normalizePath: true,
     maxLevel: -1,
-    gitignore: '.gitignore'
+    gitignore: '.gitignore',
+    extensions: null
   }, opts || {})
 
   // exclusion
@@ -150,6 +157,7 @@ function walkSync (dir, opts, level = 0) {
   }
 
   if (stats.isFile()) {
+    if (opts.extensions && !opts.extensions.test(dir)) return null
     item = merge(item, {
       type: consts.FILE,
       extension: extname(dir).toLowerCase(),
@@ -179,7 +187,7 @@ function walkSync (dir, opts, level = 0) {
       children: filter(
         map(
           dirData,
-          child => walk(join(dir, child), opts, ++level)
+          child => walkSync(join(dir, child), opts, level + 1)
         ),
         item1 => !!item1
       )
@@ -195,12 +203,13 @@ function walkSync (dir, opts, level = 0) {
  * Walk a directory tree and get its files and sub-directories into a flat array 
  * @param {String} dir directory
  * @param {Object} opts options
- * @param {RegExp|Array<RegExp>|Function} opts.includes include regex or function
- * @param {RegExp|Array<RegExp>|Function} opts.excludes exclude regex or function
+ * @param {RegExp|Array<RegExp>|Function} opts.includes apply including regex or function on both directory and file
+ * @param {RegExp|Array<RegExp>|Function} opts.excludes apply excluding regex or function on both directory and file
  * @param {Function} opts.onStep callback for every single walking step
  * @param {Boolean} opts.ignoreNotAccessible ignore the none-accessible directory or file
  * @param {Boolean} opts.normalizePath normalize the path, convert the windows style to the linux one
  * @param {Number} opts.maxLevel the maximum level of the down-walking
+ * @param {RegExp} opts.extensions apply extension regex on file
  */
 async function flatten (dir, opts, level = 0) {
 
@@ -211,13 +220,15 @@ async function flatten (dir, opts, level = 0) {
     ignoreNotAccessible: true,
     normalizePath: true,
     maxLevel: -1,
-    gitignore: '.gitignore'
+    gitignore: '.gitignore',
+    extensions: null
   }, opts || {})
 
   let items = []
   let onStep = opts.onStep
   opts.onStep = function (item) {
     item = onStep.call(this, item)
+    delete item.children
     items.push(item)
   }
   await walk(dir, opts, level)
@@ -229,12 +240,13 @@ async function flatten (dir, opts, level = 0) {
  * Walk a directory tree and get its files and sub-directories into a flat array 
  * @param {String} dir directory
  * @param {Object} opts options
- * @param {RegExp|Array<RegExp>|Function} opts.includes include regex or function
- * @param {RegExp|Array<RegExp>|Function} opts.excludes exclude regex or function
+ * @param {RegExp|Array<RegExp>|Function} opts.includes apply including regex or function on both directory and file
+ * @param {RegExp|Array<RegExp>|Function} opts.excludes apply excluding regex or function on both directory and file
  * @param {Function} opts.onStep callback for every single walking step
  * @param {Boolean} opts.ignoreNotAccessible ignore the none-accessible directory or file
  * @param {Boolean} opts.normalizePath normalize the path, convert the windows style to the linux one
  * @param {Number} opts.maxLevel the maximum level of the down-walking
+ * @param {RegExp} opts.extensions apply extension regex on file
  */
 function flattenSync (dir, opts, level = 0) {
 
@@ -245,13 +257,15 @@ function flattenSync (dir, opts, level = 0) {
     ignoreNotAccessible: true,
     normalizePath: true,
     maxLevel: -1,
-    gitignore: '.gitignore'
+    gitignore: '.gitignore',
+    extensions: null
   }, opts || {})
 
   let items = []
   let onStep = opts.onStep
   opts.onStep = function (item) {
     item = onStep.call(this, item)
+    delete item.children
     items.push(item)
   }
   walkSync(dir, opts, level)

@@ -12,7 +12,7 @@ npm run test1
 2. Run the debug command
 
   ```
-  node --harmony --inspect-brk test/debugs/your.debug.js
+  babel-node --harmony --inspect-brk test/debugs/your.debug.js
   ```
 3. Open the Chrome inspector interface
 
@@ -21,3 +21,5 @@ npm run test1
   ```
 
   You will see the files listed for inspcecting.
+
+4. Add the `fs` folder to the chrome-devtools's workspace

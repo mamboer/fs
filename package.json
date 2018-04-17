@@ -6,7 +6,7 @@
   "scripts": {
     "test": "ava --serial test/**/*.test.js",
     "test1": "ava --watch --serial test/**/*.test.js",
-    "debug": "node --harmony --inspect-brk test/debugs/dir.debug.js"
+    "debug": "babel-node --inspect-brk test/debugs/dir.debug.js"
   },
   "keywords": [
     "fs",
