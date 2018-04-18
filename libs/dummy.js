@@ -1,4 +1,9 @@
 /**
+ * Dummy utility module
+ * @module dummy
+ */
+
+/**
  * A dummy function returns `undefined`
  */
 export function fn () {
@@ -21,6 +26,7 @@ export function fn0 () {
 
 /**
  * A dummy function returns the raw parameter
+ * @param {*} x Any object
  */
 export function fn2 (x) {
   return x

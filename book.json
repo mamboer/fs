@@ -1,0 +1,51 @@
+{ 
+  "gitbook":     "3.2.3",
+  "root":        "./docs",
+  "title":       "@aotu/fs",
+  "description": "Some Useful File System Utilities",
+  "author":      "Mamboer <mamboer@gmail.com> (https://github.com/mamboer)",
+  "structure": { 
+    "readme":  "intro.md",
+    "summary": "toc.md" 
+  },
+  "plugins": ["-sharing", "-livereload", "toolbar"],
+  "pluginsConfig": {
+    "toolbar": {
+        "buttons": [
+          {
+            "label": "GitHub",
+            "icon": "fa fa-github",
+            "url": "https://github.com/o2team/fs"
+          },
+          {
+            "label": "NPM",
+            "icon": "fa fa-bullseye",
+            "url": "https://www.npmjs.com/package/@aotu~fs"
+          }
+        ]
+    }
+  },
+  "variables": { 
+
+    "guide": {
+      "devGuide":             "[**Dev Guide**](/index.html)",
+
+      "fnWalk":               "[`Walk a directory`](/functions/walk.md)",
+      "fnFlatten":            "[`Flatten a directory`](/functions/flatten.md)",
+      "functions":            "[`Functions`](/functions/README.md)",
+
+      "dist":                 "[`Distribution`](/dist.md)",
+      "history":              "[`Revision History`](/history.md)",
+      "LICENSE":              "[`MIT License`](/LICENSE.md)",
+      "start":                "[`Getting Started`](/start.md)"
+    },
+
+    "api": {
+      "ref":                  "[`API Reference`](/api.md)",
+      "walk":                 "[`walk()`](/api.md#walk)",
+      "walkSync":             "[`walkSync()`](/api.md#walkSync)",
+      "flatten":              "[`flatten()`](/api.md#flatten)",
+      "flattenSync":          "[`flattenSync()`](/api.md#flattenSync)"
+    }
+  }
+}

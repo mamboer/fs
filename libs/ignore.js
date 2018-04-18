@@ -1,3 +1,8 @@
+/**
+ * Ignore utility module
+ * @module ignore
+ */
+
 import ignore from 'ignore'
 import findUp from 'find-up'
 import {existsSync, readFileSync} from 'fs-extra'
@@ -7,15 +12,16 @@ import {split, map, filter, isString, some} from 'lodash'
 let cache = {}
 
 /**
- * An Ignore Object
+ * The Ignore Class supporting the `.gitignore` patterns
  */
 class Ignore {
 
   /**
-   * Contruct an ignore object
-   * @param {String} ignoreFileName ignore file name
+   * Create an ignore instance
+   * @constructor
+   * @param {String} [ignoreFileName=.gitignore] The target ignore file name
    */
-  constructor (ignoreFileName) {
+  constructor (ignoreFileName = '.gitignore') {
     this.ignoreFileName = ignoreFileName
     this._init()
   }
@@ -36,14 +42,15 @@ class Ignore {
   }
   /**
    * Check a string whether is ignored
-   * @param {*} str string that to be checked
+   * @param {*} str The string that to be checked
+   * @returns {Boolean} The testing result
    */
   isIgnore (str) {
     if (!this.ig) return false
     return this.ig.ignores(str)
   }
   /**
-   * reset cache
+   * Reset cache of the ignore file
    */
   reset () {
     this._init()
@@ -52,8 +59,10 @@ class Ignore {
 
 /**
  * Test whether a string is matching the .gitignore patterns
- * @param {String} str string that to be tested
- * @param {String|String[]} ignoreFiles ignore files, default is `.gitignore`
+ * @param {String} str The string that to be tested
+ * @param {String|String[]} [ignoreFiles=.gitignore] The ignore files
+ * @static
+ * @returns {Boolean} The testing result
  */
 function isIgnore (str, ignoreFiles = '.gitignore') {
 
