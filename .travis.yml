@@ -8,11 +8,9 @@ node_js:
   - '8'
   - 'node'
 script:
- - >
-  node install
-  npm run eslint
-  npm run test
-  npm run docs:release
+  - 'npm run eslint'
+  - 'npm run test'
+  - 'npm run docs:release'
 after_script:
   - cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
 after_success:
