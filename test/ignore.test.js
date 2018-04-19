@@ -25,4 +25,5 @@ test('Can ignore properly', t => {
   t.true(ig.isIgnore('/fs/node_modules'))
   t.true(!ig.isIgnore('fs/.gitignore'))
   t.true(Ignore.isIgnore('fs/node_modules', '.gitignore'))
+  t.true(Ignore.isIgnore('fs/test/fixtures/dir1/file1.txt', '.fsignore'))
 })

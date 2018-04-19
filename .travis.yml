@@ -2,19 +2,41 @@ language: node_js
 cache:
   directories:
     - ~/.npm
+
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - g++-4.8
+  ssh_known_hosts: github.com
+
 notifications:
   email: false
+
 node_js:
   - '8'
   - 'node'
+
 script:
   - 'npm run eslint'
   - 'npm run test'
-  - 'npm run docs:release'
+  - 'npm run docs:clean'
+  - 'npm run docs'
+  - 'npm run deploy "${TRAVIS_PULL_REQUEST}"'
+
 after_script:
   - cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
+
 after_success:
   - npm run travis-deploy-once "npm run semantic-release"
+
 branches:
-  except:
-    - /^v\d+\.\d+\.\d+$/
+  only:
+    - master
+
+env:
+  global:
+    - CXX: g++-4.8
+    - GH_REPO: "github.com/o2team/books.git"
+    - secure: "izDq9jqjboKS6BGohGDfg+WtMSs3VaWw7zdqoOmgAI8csvrLARtT7zzQJXC4ag/jTOXySkDflJsDcM2GPaY7fOWypUUIV3MF5gDzmaz3RB22EzHIz7BW1lht2ZjhqQqVMAMEndiGWMqUO8bkdYD3L9rsTxu58ncDKH+sCbEktS5Omk66BBwGnPkwYpnp0CgOe4YZ5y/RTD6HpCBOlOtNSonVZ4AI/KL9wLbUOuu9D9ZDbrQCX3CQviLmxSctWhaE7Y19oHiWmD5Scluxymt5difVNhK5cmmbiDogadlkb772rN3umFrvE82QW362kyqAJ/E1YIcAsqiYtmvkfu+rC0fzs1a/CMkioDX4WRHrLLhE92A2AI4IMB9S6XInVL1uLekLjD5OL8qm6L/aHxRoRKFpk/RFomQcIFNxGhm4v7Iy+3MwlPJq5gKQPrU1aF1vnDbkwPq3FuyI+QTvxBxtPSIecVop/UKOC46Q9vIZvA0j87zOr/eFqrCzdMuEY7edRWyOKVvF7VSh9MKmTte7fdH8PdGdnlmvJbIAbFK2EiZA9efw/JxQy4czeolaSvbCkWRh5jxfut43Bl+srC9sqKncbunxGpDRcDJD1YEZP71TiQugjBJoalNLwq34tYmMx/4izGIZyVvjXRlryUNkcAxBOutIwiMHXbZP7U23//Y="

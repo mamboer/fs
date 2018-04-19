@@ -17,7 +17,7 @@ test.beforeEach('setup', t => {
 })
 
 test('walk: Can walk properly', async t => {
-  let items = await dir.walk(t.context.dir)
+  let items = await dir.walk(t.context.dir, {gitignore: '.fsignore'})
   t.true(isObject(items), t.context.dir)
   t.true(isEqual(items.name, basename(t.context.dir)))
   t.true(isEqual(backslashToSlash(t.context.dir), items.path))
@@ -33,13 +33,13 @@ test('walk: Can walk properly', async t => {
   t.true(isEqual(items.children[1].children[0].level, 2))
   t.true(isEqual(items.children[1].children[0].children.length, 1))
   t.true(isArray(items.children[0].children))
-  // file1.log is being ignored
+  // file1.txt is being ignored
   t.true(isEqual(items.children[0].children.length, 1))
 })
 
 test('walk: Can disable gitignore pattern', async t => {
   let items = await dir.walk(t.context.dir, {gitignore: false})
-  // file1.log is valid because we disable the gitignore pattern
+  // file1.txt is valid because we disable the gitignore pattern
   t.true(isEqual(items.children[0].children.length, 2))
 })
 
@@ -107,16 +107,16 @@ test('walk: Can set the onStep option', async t => {
 test('walk: Can set the extensions option', async t => {
   let items = await dir.walk(t.context.dir, {
     gitignore: false,
-    extensions: /\.log$/i
+    extensions: /\.txt$/i
   })
-  t.is(items.children[0].children[0].name, 'file1.log')
+  t.is(items.children[0].children[0].name, 'file1.txt')
 })
 
 /* walkSync tests
 =======================*/
 
 test('walkSync: Can walk properly', t => {
-  let items = dir.walkSync(t.context.dir)
+  let items = dir.walkSync(t.context.dir, {gitignore: '.fsignore'})
   t.true(isObject(items), t.context.dir)
   t.true(isEqual(items.name, basename(t.context.dir)))
   t.true(isEqual(backslashToSlash(t.context.dir), items.path))
@@ -132,13 +132,13 @@ test('walkSync: Can walk properly', t => {
   t.true(isEqual(items.children[1].children[0].level, 2))
   t.true(isEqual(items.children[1].children[0].children.length, 1))
   t.true(isArray(items.children[0].children))
-  // file1.log is being ignored
+  // file1.txt is being ignored
   t.true(isEqual(items.children[0].children.length, 1))
 })
 
 test('walkSync: Can disable gitignore pattern', t => {
   let items = dir.walkSync(t.context.dir, {gitignore: false})
-  // file1.log is valid because we disable the gitignore pattern
+  // file1.txt is valid because we disable the gitignore pattern
   t.true(isEqual(items.children[0].children.length, 2))
 })
 
@@ -207,7 +207,7 @@ test('walkSync: Can set the onStep option', t => {
 })
 
 test('flatten: Can flatten properly', async t => {
-  let items = await dir.flatten(t.context.dir)
+  let items = await dir.flatten(t.context.dir, {gitignore: '.fsignore'})
   t.true(isArray(items))
   t.is(items.length, 7)
   t.is(items[0].name, 'file0.md')
@@ -215,7 +215,7 @@ test('flatten: Can flatten properly', async t => {
 })
 
 test('flattenSync: Can flatten properly', async t => {
-  let items = dir.flattenSync(t.context.dir)
+  let items = dir.flattenSync(t.context.dir, {gitignore: '.fsignore'})
   t.true(isArray(items))
   t.is(items.length, 7)
   t.is(items[0].name, 'file0.md')
