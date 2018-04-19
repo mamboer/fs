@@ -1,4 +1,4 @@
-# @aotu/fs ({{"" | npmPackage("version")}})
+# @aotu/fs
 
 The `@aotu/fs` library promotes several useful file system
 utilities which you cannot get from the offical [fs](https://nodejs.org/dist/latest-v8.x/docs/api/fs.html) module.

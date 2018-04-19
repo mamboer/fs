@@ -31,5 +31,5 @@ branches:
 
 env:
   global:
-    - GH_REPO: "github.com/o2team/books.git"
+    - GH_REPO: "github.com/o2team/fs.git"
     - secure: "izDq9jqjboKS6BGohGDfg+WtMSs3VaWw7zdqoOmgAI8csvrLARtT7zzQJXC4ag/jTOXySkDflJsDcM2GPaY7fOWypUUIV3MF5gDzmaz3RB22EzHIz7BW1lht2ZjhqQqVMAMEndiGWMqUO8bkdYD3L9rsTxu58ncDKH+sCbEktS5Omk66BBwGnPkwYpnp0CgOe4YZ5y/RTD6HpCBOlOtNSonVZ4AI/KL9wLbUOuu9D9ZDbrQCX3CQviLmxSctWhaE7Y19oHiWmD5Scluxymt5difVNhK5cmmbiDogadlkb772rN3umFrvE82QW362kyqAJ/E1YIcAsqiYtmvkfu+rC0fzs1a/CMkioDX4WRHrLLhE92A2AI4IMB9S6XInVL1uLekLjD5OL8qm6L/aHxRoRKFpk/RFomQcIFNxGhm4v7Iy+3MwlPJq5gKQPrU1aF1vnDbkwPq3FuyI+QTvxBxtPSIecVop/UKOC46Q9vIZvA0j87zOr/eFqrCzdMuEY7edRWyOKVvF7VSh9MKmTte7fdH8PdGdnlmvJbIAbFK2EiZA9efw/JxQy4czeolaSvbCkWRh5jxfut43Bl+srC9sqKncbunxGpDRcDJD1YEZP71TiQugjBJoalNLwq34tYmMx/4izGIZyVvjXRlryUNkcAxBOutIwiMHXbZP7U23//Y="

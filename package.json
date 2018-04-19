@@ -44,7 +44,6 @@
     "codacy-coverage": "^2.1.1",
     "eslint": "^4.19.1",
     "gitbook-cli": "^2.3.2",
-    "gitbook-plugin-packageinfo": "^1.0.0",
     "gitbook-plugin-toolbar": "^0.6.0",
     "jsdoc-to-markdown": "^4.0.1",
     "nyc": "^11.7.1",
