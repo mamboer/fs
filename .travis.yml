@@ -15,7 +15,7 @@ script:
   - 'npm run test'
   - 'npm run docs:clean'
   - 'npm run docs'
-  - 'npm run deploy "${TRAVIS_PULL_REQUEST}"'
+  - npm run travis-deploy-once "npm run deploy ${TRAVIS_PULL_REQUEST}"
 
 after_script:
   - npm run cov:clean
