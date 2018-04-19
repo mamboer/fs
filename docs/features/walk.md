@@ -24,7 +24,9 @@ let dirTreeObject = await walk('path/to/your/dir', {
 
 ## The json representation of the target directory
 
-As you can see, the {{book.api.walk}} function takes a absolute directory path as the first parameter while an options as the second, and returns a json tree object representing the structure of that directory. The default returned json object looks like:
+As you can see, the {{book.api.walk}} function takes an absolute directory path as the first parameter while an options object as the second, and returns a json tree object representing the structure of that directory.
+
+The default returned json object looks like:
 
 ```json
 {
@@ -70,13 +72,13 @@ let dirTreeObject = await walk ('path/to/your/dir', {
 
 ## Super filtering
 
-There are three options for providing smart and strong filtering feature.
+There are three options for providing smart and strong filtering features.
 
 ### The `.gitignore` patterns
 
 We can ignore directories and files following the `.gitignore` patterns through the `gitignore` option.
 
-By default, the nearest `.gitignore` file will be used by looking upward, you can also use a custom file or just disable it by setting the `gitignore` option.
+By default, the nearest `.gitignore` file will be used by looking upward from the current directory, you can also use a custom file or just disable it by setting the `gitignore` option.
 
 ### Including and excluding
 

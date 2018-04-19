@@ -8,7 +8,7 @@
     "readme":  "intro.md",
     "summary": "toc.md" 
   },
-  "plugins": ["-sharing", "-livereload", "toolbar"],
+  "plugins": ["-sharing", "-livereload", "toolbar", "packageinfo"],
   "pluginsConfig": {
     "toolbar": {
         "buttons": [
@@ -42,10 +42,10 @@
 
     "api": {
       "ref":                  "[`API Reference`](/api.md)",
-      "walk":                 "[`walk()`](/api.md#walk)",
-      "walkSync":             "[`walkSync()`](/api.md#walkSync)",
-      "flatten":              "[`flatten()`](/api.md#flatten)",
-      "flattenSync":          "[`flattenSync()`](/api.md#flattenSync)"
+      "walk":                 "[`walk()`](/api.md#module_dir__walk)",
+      "walkSync":             "[`walkSync()`](/api.md#module_dir__walkSync)",
+      "flatten":              "[`flatten()`](/api.md#module_dir__flatten)",
+      "flattenSync":          "[`flattenSync()`](/api.md#module_dir__flattenSync)"
     }
   }
 }

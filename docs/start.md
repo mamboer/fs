@@ -6,6 +6,11 @@
 npm install --save @aotu/fs
 ```
 
+Or with `yarn`
+
+```shell
+yarn add @aotu/fs
+```
 
 ## Access
 
@@ -13,14 +18,14 @@ npm install --save @aotu/fs
   
   ```js
   import { walk, flatten }  from '@aotu/fs';
-  -OR-
+  // -OR-
   import * as FS from '@aotu/fs';
-  -OR-
+  // -OR-
   import FS from '@aotu/fs';
   
   walk(...)
   flatten(...)
-  -OR-
+  // -OR-
   FS.walk(...)
   FS.flatten(...)
   ```

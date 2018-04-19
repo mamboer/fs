@@ -1,7 +1,29 @@
 /**
- * directory utility module
+ * A directory utility module
  * @module dir
  */
+
+/**
+ * The json object representing a directory or a file
+ * @typedef {Object} FSItem
+ * @property {String} name - The name of the directory or file
+ * @property {String} path - The absolute path of the directory or file
+ * @property {String} type - The FSItem type, possible values are `directory` and `file`
+ * @property {Number} size - The size of the directory or file
+ * @property {Number} level - The level of the directory or file, note that the root directory has a level with `0`
+ * @property {FSItem[]} children - The children of the current directory
+ * @property {String} extension - The extension of the current file
+ */
+
+ /**
+  * RegExp Or RegExp[] Or Function
+  * @typedef RegExpsOrFunction
+  */
+
+/**
+  * String Or Boolean
+  * @typedef StringOrBoolean
+  */
 
 import {readdir, stat, readdirSync, statSync} from 'fs-extra'
 import {join, basename, extname} from 'path'
@@ -17,15 +39,15 @@ import Ignore from './ignore'
  * @async
  * @param {String} dir directory
  * @param {Object} opts options
- * @param {RegExp|RegExp[]|Function} [opts.includes=dummy~fn1] Apply including regex or function on both directory and file
- * @param {RegExp|RegExp[]|Function} [opts.excludes=dummy~fn0] Apply excluding regex or function on both directory and file
- * @param {Function} [opts.onStep=dummy~fn2] Callback for every single walking step
+ * @param {RegExpsOrFunction} opts.includes Apply including regex or function on both directory and file
+ * @param {RegExpsOrFunction} opts.excludes Apply excluding regex or function on both directory and file
+ * @param {Function} opts.onStep Callback for every single walking step
  * @param {Boolean} [opts.ignoreNotAccessible=true] Whether ignore the none-accessible directory or file
  * @param {Boolean} [opts.normalizePath=true] Normalize the path, convert the windows style to the linux one
  * @param {Number} [opts.maxLevel=-1] The maximum level of the down-walking
- * @param {String|Boolean} [opts.gitignore=.gitignore] Apply the nearest gitignore patterns when walking
+ * @param {StringOrBoolean} [opts.gitignore=.gitignore] Apply the nearest gitignore patterns when walking
  * @param {RegExp} opts.extensions Apply extension regex on file
- * @returns {Promise<{name: String, path: String, type: String, size: Number, level: Number, children: Object[]}>} A json tree representing the target directory
+ * @returns {Promise<FSItem>} A json tree representing the target directory
  */
 async function walk (dir, opts, level = 0) {
   assert.ok(!!dir, `The 'dir' parameter must be provided.`)
@@ -115,15 +137,15 @@ async function walk (dir, opts, level = 0) {
  * Walk a directory recursively and return a json tree
  * @param {String} dir directory
  * @param {Object} opts options
- * @param {RegExp|RegExp[]|Function} [opts.includes=dummy~fn1] Apply including regex or function on both directory and file
- * @param {RegExp|RegExp[]|Function} [opts.excludes=dummy~fn0] Apply excluding regex or function on both directory and file
- * @param {Function} [opts.onStep=dummy~fn2] Callback for every single walking step
+ * @param {RegExpsOrFunction} opts.includes Apply including regex or function on both directory and file
+ * @param {RegExpsOrFunction} opts.excludes Apply excluding regex or function on both directory and file
+ * @param {Function} opts.onStep Callback for every single walking step
  * @param {Boolean} [opts.ignoreNotAccessible=true] Whether ignore the none-accessible directory or file
  * @param {Boolean} [opts.normalizePath=true] Normalize the path, convert the windows style to the linux one
  * @param {Number} [opts.maxLevel=-1] The maximum level of the down-walking
- * @param {String|Boolean} [opts.gitignore=.gitignore] Apply the nearest gitignore patterns when walking
+ * @param {StringOrBoolean} [opts.gitignore=.gitignore] Apply the nearest gitignore patterns when walking
  * @param {RegExp} opts.extensions Apply extension regex on file
- * @returns {{name: String, path: String, type: String, size: Number, level: Number, children: Object[]}} A json tree representing the target directory
+ * @returns {FSItem} A json tree representing the target directory
  */
 function walkSync (dir, opts, level = 0) {
   assert.ok(!!dir, `The 'dir' parameter must be provided.`)
@@ -212,15 +234,15 @@ function walkSync (dir, opts, level = 0) {
  * @async
  * @param {String} dir directory
  * @param {Object} opts options
- * @param {RegExp|RegExp[]|Function} [opts.includes=dummy~fn1] Apply including regex or function on both directory and file
- * @param {RegExp|RegExp[]|Function} [opts.excludes=dummy~fn0] Apply excluding regex or function on both directory and file
- * @param {Function} [opts.onStep=dummy~fn2] Callback for every single walking step
+ * @param {RegExpsOrFunction} opts.includes Apply including regex or function on both directory and file
+ * @param {RegExpsOrFunction} opts.excludes Apply excluding regex or function on both directory and file
+ * @param {Function} opts.onStep Callback for every single walking step
  * @param {Boolean} [opts.ignoreNotAccessible=true] Whether ignore the none-accessible directory or file
  * @param {Boolean} [opts.normalizePath=true] Normalize the path, convert the windows style to the linux one
  * @param {Number} [opts.maxLevel=-1] The maximum level of the down-walking
- * @param {String|Boolean} [opts.gitignore=.gitignore] Apply the nearest gitignore patterns when walking
+ * @param {StringOrBoolean} [opts.gitignore=.gitignore] Apply the nearest gitignore patterns when walking
  * @param {RegExp} opts.extensions Apply extension regex on file
- * @returns {Promise<{name: String, path: String, type: String, size: Number, level: Number}[]>} An Object Array representing the target directory
+ * @returns {Promise<FSItem[]>} An Object Array representing the target directory
  */
 async function flatten (dir, opts, level = 0) {
 
@@ -251,15 +273,15 @@ async function flatten (dir, opts, level = 0) {
  * Walk a directory tree and get its files and sub-directories into a flat array
  * @param {String} dir directory
  * @param {Object} opts options
- * @param {RegExp|RegExp[]|Function} [opts.includes=dummy~fn1] Apply including regex or function on both directory and file
- * @param {RegExp|RegExp[]|Function} [opts.excludes=dummy~fn0] Apply excluding regex or function on both directory and file
- * @param {Function} [opts.onStep=dummy~fn2] Callback for every single walking step
+ * @param {RegExpsOrFunction} opts.includes Apply including regex or function on both directory and file
+ * @param {RegExpsOrFunction} opts.excludes Apply excluding regex or function on both directory and file
+ * @param {Function} opts.onStep Callback for every single walking step
  * @param {Boolean} [opts.ignoreNotAccessible=true] Whether ignore the none-accessible directory or file
  * @param {Boolean} [opts.normalizePath=true] Normalize the path, convert the windows style to the linux one
  * @param {Number} [opts.maxLevel=-1] The maximum level of the down-walking
- * @param {String|Boolean} [opts.gitignore=.gitignore] Apply the nearest gitignore patterns when walking
+ * @param {StringOrBoolean} [opts.gitignore=.gitignore] Apply the nearest gitignore patterns when walking
  * @param {RegExp} opts.extensions Apply extension regex on file
- * @returns {{name: String, path: String, type: String, size: Number, level: Number}[]} An Object Array representing the target directory
+ * @returns {FSItem[]} An Object Array representing the target directory
  */
 function flattenSync (dir, opts, level = 0) {
 

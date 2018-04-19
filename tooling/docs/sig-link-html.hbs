@@ -1,0 +1,26 @@
+{{!-- 
+ORIGINAL: node_modules/dmd/partials/shared/signature/sig-link-html.hbs
+========
+<a href="#{{{anchorName}}}">
+GOALS:
+=====
+  - relace the anchorName with escapedAnchor (anchorName) to make the anchor work.
+      CHANGE: anchorName
+      TO:     escapedAnchor (anchorName)
+      REF: https://github.com/jsdoc2md/jsdoc-to-markdown/issues/125#issuecomment-298330176
+--}}
+
+{{#if name}}{{#sig no-gfm=true ~}}
+{{{@depOpen}~}}
+<a href="#{{{escapedAnchor (anchorName)}}}">
+{{~{@codeOpen}~}}
+{{#if @prefix}}{{@prefix}} {{/if~}}
+{{@accessSymbol}}{{#if (isEvent)}}"{{{name}}}"{{else}}{{{name}}}{{/if~}}
+{{~#if @methodSign}}{{#if (isEvent)}} {{@methodSign}}{{else}}{{@methodSign}}{{/if}}{{/if~}}
+{{{@codeClose}~}}
+</a>
+{{~#if @returnSymbol}} {{@returnSymbol}}{{/if~}}
+{{#if @returnTypes}} {{>linked-type-list types=@returnTypes html=true delimiter=" | " }}{{/if~}}
+{{#if @suffix}} {{@suffix}}{{/if~}}
+{{{@depClose}~}}
+{{~/sig}}{{/if~}}
