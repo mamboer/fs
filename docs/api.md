@@ -1,7 +1,7 @@
 
 <br/><br/><br/>
 
-<a id="module_dir" href="#module_dir"></a>
+<a id="module_dir"></a>
 
 <h5 style="margin: 10px 0px; border-width: 5px 0px; padding: 5px; border-style: solid;">
   dir</h5>A directory utility module
@@ -27,7 +27,7 @@
 
 <br/><br/><br/>
 
-<a id="module_dir__walk" href="#module_dir__walk"></a>
+<a id="module_dir__walk"></a>
 
 <h5 style="margin: 10px 0px; border-width: 5px 0px; padding: 5px; border-style: solid;">
   dir~walk(dir, opts) ⇒ Promise.&lt;FSItem&gt;</h5>Walk a directory recursively and return a json tree
@@ -50,7 +50,7 @@
 
 <br/><br/><br/>
 
-<a id="module_dir__walkSync" href="#module_dir__walkSync"></a>
+<a id="module_dir__walkSync"></a>
 
 <h5 style="margin: 10px 0px; border-width: 5px 0px; padding: 5px; border-style: solid;">
   dir~walkSync(dir, opts) ⇒ FSItem</h5>Walk a directory recursively and return a json tree
@@ -73,7 +73,7 @@
 
 <br/><br/><br/>
 
-<a id="module_dir__flatten" href="#module_dir__flatten"></a>
+<a id="module_dir__flatten"></a>
 
 <h5 style="margin: 10px 0px; border-width: 5px 0px; padding: 5px; border-style: solid;">
   dir~flatten(dir, opts) ⇒ Promise.&lt;Array.&lt;FSItem&gt;&gt;</h5>Walk a directory tree and get its files and sub-directories into a flat array
@@ -96,7 +96,7 @@
 
 <br/><br/><br/>
 
-<a id="module_dir__flattenSync" href="#module_dir__flattenSync"></a>
+<a id="module_dir__flattenSync"></a>
 
 <h5 style="margin: 10px 0px; border-width: 5px 0px; padding: 5px; border-style: solid;">
   dir~flattenSync(dir, opts) ⇒ Array.&lt;FSItem&gt;</h5>Walk a directory tree and get its files and sub-directories into a flat array
@@ -119,7 +119,7 @@
 
 <br/><br/><br/>
 
-<a id="module_dir__FSItem" href="#module_dir__FSItem"></a>
+<a id="module_dir__FSItem"></a>
 
 <h5 style="margin: 10px 0px; border-width: 5px 0px; padding: 5px; border-style: solid;">
   dir~FSItem : Object</h5>The json object representing a directory or a file
@@ -139,7 +139,7 @@
 
 <br/><br/><br/>
 
-<a id="module_dir__RegExpsOrFunction" href="#module_dir__RegExpsOrFunction"></a>
+<a id="module_dir__RegExpsOrFunction"></a>
 
 <h5 style="margin: 10px 0px; border-width: 5px 0px; padding: 5px; border-style: solid;">
   dir~RegExpsOrFunction</h5>RegExp Or RegExp[] Or Function
@@ -147,7 +147,7 @@
 
 <br/><br/><br/>
 
-<a id="module_dir__StringOrBoolean" href="#module_dir__StringOrBoolean"></a>
+<a id="module_dir__StringOrBoolean"></a>
 
 <h5 style="margin: 10px 0px; border-width: 5px 0px; padding: 5px; border-style: solid;">
   dir~StringOrBoolean</h5>String Or Boolean
