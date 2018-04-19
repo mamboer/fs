@@ -18,7 +18,9 @@ script:
   - 'npm run deploy "${TRAVIS_PULL_REQUEST}"'
 
 after_script:
-  - cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
+  - npm run cov:clean
+  - npm run cov
+  - npm run cov:publish
 
 after_success:
   - npm run travis-deploy-once "npm run semantic-release"

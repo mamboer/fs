@@ -1,7 +1,7 @@
 # Distribution
 
 This utility is primarily distributed as an [npm
-package](https://www.npmjs.com/package/@aotu~fs) (*simply `npm
+package](https://www.npmjs.com/package/@aotu/fs) (*simply `npm
 install` and use it in your [Node.js](https://nodejs.org/en/)
 development environment*).
 
