@@ -4,8 +4,8 @@
 * [Getting Started](start.md)
 
 ----
-* [Functions](functions/README.md)
-  * [Walk a directory](functions/walk.md)
+* [Features](features/README.md)
+  * [Walk a directory](features/walk.md)
   * [Flatten a directory](concepts/flatten.md)
 
 ----

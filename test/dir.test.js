@@ -104,6 +104,14 @@ test('walk: Can set the onStep option', async t => {
   t.is(items.xxxx, 1)
 })
 
+test('walk: Can set the extensions option', async t => {
+  let items = await dir.walk(t.context.dir, {
+    gitignore: false,
+    extensions: /\.log$/i
+  })
+  t.is(items.children[0].children[0].name, 'file1.log')
+})
+
 /* walkSync tests
 =======================*/
 

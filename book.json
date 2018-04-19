@@ -30,9 +30,9 @@
     "guide": {
       "devGuide":             "[**Dev Guide**](/index.html)",
 
-      "fnWalk":               "[`Walk a directory`](/functions/walk.md)",
-      "fnFlatten":            "[`Flatten a directory`](/functions/flatten.md)",
-      "functions":            "[`Functions`](/functions/README.md)",
+      "fnWalk":               "[`Walk a directory`](/features/walk.md)",
+      "fnFlatten":            "[`Flatten a directory`](/features/flatten.md)",
+      "features":            "[`Features`](/features/README.md)",
 
       "dist":                 "[`Distribution`](/dist.md)",
       "history":              "[`Revision History`](/history.md)",

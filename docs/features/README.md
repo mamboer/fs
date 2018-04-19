@@ -1,4 +1,4 @@
-# Functions
+# Features
 
 - {{book.guide.fnWalk}} ... using {{book.api.walk}}, walk a direcotry and return a json tree
 
