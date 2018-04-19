@@ -9,6 +9,24 @@ Useful file system utilities.
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 
 
+✅ An **experimental** project applying several cool stuffs, a boilerplate for writing new NPM packages.
+
+✓ Auto-release with [semantic-release](https://github.com/semantic-release/semantic-release)
+
+✓ Fast Unit Tests with [ava](https://www.npmjs.com/package/ava)
+
+✓ Coverage with [nyc](https://www.npmjs.com/package/nyc)
+
+✓ Automated Code reviews with [codacy](https://www.codacy.com/)
+
+✓ Elegant documents via [jsdoc-to-markdown](https://www.npmjs.com/package/jsdoc-to-markdown) along with [gitbook](https://www.npmjs.com/package/gitbook-cli)
+
+✓ Scoped NPM package
+
+✓ Publish gh-pages automatically via [travis-ci](https://travis-ci.org/)
+
+✓ Semantic git commits via [semantic-git-commit-cli](https://www.npmjs.com/package/semantic-git-commit-cli)
+
 ## Unit Tests
 
 ```

@@ -18,7 +18,7 @@ Notes](https://github.com/o2team/fs/releases).
 
 Release           | What                                   | *When*
 ------------------|----------------------------------------|------------------
-[v0.1.0](#v0_1_0) | Initial Release                        | *April 18, 2018*
+[v1.0.1](#v1_0_1) | Initial Release                        | *April 18, 2018*
 
 
 
@@ -29,13 +29,17 @@ Release           | What                                   | *When*
 
 <!-- ************************************************************* -->
 <br/><br/><br/>
-<h3 id="v0_1_0" style="margin: 10px 0px; border-width: 5px 0px; padding: 5px; border-style: solid;">
-  v0.1.0 - Initial Release <i>(April 18, 2018)</i>
+<h3 id="v1_0_1" style="margin: 10px 0px; border-width: 5px 0px; padding: 5px; border-style: solid;">
+  v1.0.1 - Initial Release <i>(April 18, 2018)</i>
 </h3>
 [Full Docs](https://o2team.github.io/fs/)
 &bull;
-[GitHub Release](https://github.com/o2team/fs/releases/tag/v0.1.0)
+[GitHub Release](https://github.com/o2team/fs/releases/tag/v1.0.1)
 &bull;
-[GitHub Content](https://github.com/o2team/fs/tree/v0.1.0)
+[GitHub Content](https://github.com/o2team/fs/tree/v1.0.1)
 
-1. **Holy Guacamole Batman!** ... *This commit has no parents!!*
+1. Auto-release with [semantic-release](https://github.com/semantic-release/semantic-release)
+2. Fast Unit Tests with [ava](https://www.npmjs.com/package/ava)
+3. Coverage with [nyc](https://www.npmjs.com/package/nyc)
+4. Automated Code reviews with [codacy](https://www.codacy.com/)
+5. Elegant documents via [jsdoc-to-markdown](https://www.npmjs.com/package/jsdoc-to-markdown) along with [gitbook](https://www.npmjs.com/package/gitbook-cli)
