@@ -69,5 +69,8 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/o2team/fs.git"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
