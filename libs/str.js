@@ -3,14 +3,14 @@
  * @module str
  */
 
-import {some, isArray} from 'lodash'
-import {isRegex} from './regex'
+const {some, isArray} = require('lodash')
+const {isRegex} = require('./regex')
 /**
  * Normalizes windows style paths by replacing double backslahes with single forward slahes (unix style).
  * @param {String} str The string that to be handled
  * @returns {String} The normalized path
  */
-export function backslashToSlash (str) {
+function backslashToSlash (str) {
   return str.replace(/\\/g, '/');
 }
 
@@ -21,7 +21,7 @@ export function backslashToSlash (str) {
  * @param {Boolean} reversed Whether perform a reversing test
  * @returns {Boolean} The testing result
  */
-export function test (str, regexOrFunc, reversed = false) {
+function test (str, regexOrFunc, reversed = false) {
     if (isRegex(regexOrFunc)) {
       regexOrFunc = [regexOrFunc]
     }
@@ -41,7 +41,7 @@ export function test (str, regexOrFunc, reversed = false) {
     return false
 }
 
-export default {
+module.exports = {
   backslashToSlash,
   test
 }

@@ -8,10 +8,10 @@
  * @param  {*}  regExp The target object to be tested
  * @returns {Boolean} The testing result
  */
-export function isRegex(regExp) {
+function isRegex(regExp) {
   return typeof regExp === "object" && regExp.constructor == RegExp
 }
 
-export default {
+module.exports = {
   isRegex
 }

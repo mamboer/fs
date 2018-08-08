@@ -1,5 +1,5 @@
-import test from 'ava'
-import STR from '../libs/str'
+const test = require('ava')
+const STR = require('../libs/str')
 
 test('Can convert backslash to slash', t => {
   t.true(STR.backslashToSlash('\\dir\\to\\file') === '/dir/to/file')

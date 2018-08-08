@@ -3,10 +3,10 @@
  * @module ignore
  */
 
-import ignore from 'ignore'
-import findUp from 'find-up'
-import {existsSync, readFileSync} from 'fs-extra'
-import {split, map, filter, isString, some} from 'lodash'
+const ignore =  require('ignore')
+const findUp = require('find-up')
+const {existsSync, readFileSync} = require('fs-extra')
+const {split, map, filter, isString, some} = require('lodash')
 
 
 let cache = {}
@@ -82,4 +82,4 @@ function isIgnore (str, ignoreFiles = '.gitignore') {
 
 Ignore.isIgnore = isIgnore
 
-export default Ignore
+module.exports = Ignore

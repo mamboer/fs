@@ -25,14 +25,14 @@
   * @typedef StringOrBoolean
   */
 
-import {readdir, stat, readdirSync, statSync} from 'fs-extra'
-import {join, basename, extname} from 'path'
-import assert from 'assert'
-import {merge, map, filter} from 'lodash'
-import {fn0, fn1, fn2} from './dummy'
-import consts from './consts'
-import {backslashToSlash, test} from './str';
-import Ignore from './ignore'
+const {readdir, stat, readdirSync, statSync} = require('fs-extra')
+const {join, basename, extname} = require('path')
+const assert = require('assert')
+const {merge, map, filter} = require('lodash')
+const {fn0, fn1, fn2} = require('./dummy')
+const consts = require('./consts')
+const {backslashToSlash, test} = require('./str')
+const Ignore = require('./ignore')
 
 /**
  * Walk a directory recursively and return a json tree
@@ -308,24 +308,8 @@ function flattenSync (dir, opts, level = 0) {
   return items
 }
 
-// NOTE: This non-default export supports ES6 imports.
-//       Example:
-//         import { walk }    from '@aotu/fs';
-//       -or-
-//         import * as FS from '@aotu/fs';
-export {
-  walk,
-  walkSync,
-  flatten,
-  flattenSync
-}
 
-// NOTE: This default export supports CommonJS modules (otherwise Babel does NOT promote them).
-//       Example:
-//         const { walk } = require('@aotu/fs');
-//       -or-
-//         const FS   = require('@aotu/fs');
-export default {
+module.exports = {
   walk,
   walkSync,
   flatten,

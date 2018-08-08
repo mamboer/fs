@@ -1,6 +1,6 @@
-import test from 'ava'
+const test = require('ava')
 
-import {fn, fn0, fn1, fn2} from '../libs/dummy'
+const {fn, fn0, fn1, fn2} = require('../libs/dummy')
 
 test('Dummy functions', t => {
   t.true(typeof fn() === 'undefined')

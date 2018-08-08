@@ -2,7 +2,7 @@
  * Constants module
  * @module consts
  */
-export default {
+module.exports = {
   /**
    * @constant
    * @type {String}

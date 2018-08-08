@@ -1,5 +1,5 @@
-import {join} from 'path'
-import dir from '../../libs/dir'
+const {join} = require('path')
+const dir = require('../../libs/dir')
 
 let testDir = join(process.cwd(), 'test/fixtures')
 

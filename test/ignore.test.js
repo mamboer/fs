@@ -1,5 +1,5 @@
-import test from 'ava'
-import Ignore from '../libs/ignore';
+const test = require('ava')
+const Ignore = require('../libs/ignore')
 
 test('Has a static method isIgnore', t => {
   t.true(typeof Ignore.isIgnore === 'function')

@@ -1,9 +1,9 @@
-import test from 'ava'
-import {isFunction, isObject, isEqual} from 'lodash'
-import {join, basename} from 'path'
-import dir from '../libs/dir'
-import {backslashToSlash} from '../libs/str'
-import { isArray } from 'util';
+const test = require('ava')
+const {isFunction, isObject, isEqual} = require('lodash')
+const {join, basename} = require('path')
+const dir = require('../libs/dir')
+const {backslashToSlash} = require('../libs/str')
+const { isArray } = require('util')
 
 test('Can access exported functions', t => {
   t.true(isFunction(dir.walk))

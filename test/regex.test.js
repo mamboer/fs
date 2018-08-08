@@ -1,5 +1,5 @@
-import test from 'ava'
-import regex from '../libs/regex'
+const test = require('ava')
+const regex = require('../libs/regex')
 
 test('Has static method isRegex', t => {
   t.true(typeof regex.isRegex === 'function')

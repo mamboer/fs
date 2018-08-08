@@ -41,7 +41,7 @@ npm run test1
 2. Run the debug command
 
   ```
-  babel-node --harmony --inspect-brk test/debugs/your.debug.js
+  node --inspect-brk test/debugs/your.debug.js
   ```
 3. Open the Chrome inspector interface
 
