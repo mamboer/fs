@@ -7,7 +7,7 @@ The `flatten` feature is very similar to the {{book.guide.fnWalk}}, except that 
 This feature can be accomplished through the {{book.api.flatten}} function.
 
 ```js
-import {flatten} from '@aotu/fs'
+const {flatten} = require('@aotu/fs')
 
 let anArray = await flatten('path/to/your/dir', {
   includes: function (path0) { return true },

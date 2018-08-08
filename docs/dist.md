@@ -6,7 +6,7 @@ install` and use it in your [Node.js](https://nodejs.org/en/)
 development environment*).
 
 In addition, the [GitHub Releases
-Page](https://github.com/o2team/fs/releases) contains a
+Page](https://github.com/mamboer/fs/releases) contains a
 tarball for each release (`fs_{ver}tar.gz`) ... which
 promotes various executable bindings **and documentation** (*should
 you wish to retain the docs locally*).  The tarball contains the

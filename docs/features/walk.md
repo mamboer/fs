@@ -7,7 +7,7 @@ The `@aotu/fs` module provides a flexible method to reach that goal, besides you
 This feature can be accomplished through the {{book.api.walk}} function.
 
 ```js
-import {walk} from '@aotu/fs'
+const {walk} = require('@aotu/fs')
 
 let dirTreeObject = await walk('path/to/your/dir', {
   includes: function (path0) { return true },
