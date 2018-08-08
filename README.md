@@ -4,7 +4,7 @@ Useful file system utilities.
 
 [![Build Status](https://travis-ci.org/o2team/fs.svg?branch=master)](https://travis-ci.org/o2team/fs)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/bc05341458d04003b781d01c3e1feac8)](https://www.codacy.com/app/mamboer/fs?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=o2team/fs&amp;utm_campaign=Badge_Grade)
-[![Codacy Badge](https://api.codacy.com/project/badge/Coverage/bc05341458d04003b781d01c3e1feac8)](https://www.codacy.com/app/mamboer/fs?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=o2team/fs&amp;utm_campaign=Badge_Coverage)
+[![Coverage Status](https://coveralls.io/repos/github/mamboer/fs/badge.svg?branch=master)](https://coveralls.io/github/mamboer/fs?branch=master)
 [![NPM Version Badge](https://img.shields.io/npm/v/@aotu/fs/latest.svg)](https://www.npmjs.com/package/@aotu/fs)
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 
