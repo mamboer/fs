@@ -1,0 +1,508 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Flatten a directory · @aotu/fs</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="Mamboer <mamboer@gmail.com> (https://github.com/mamboer)">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+        <link rel="stylesheet" href="../styles/website.css">
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="../api.html" />
+    
+    
+    <link rel="prev" href="walk.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        <li class="header">@aotu/fs</li>
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../start.html">
+            
+                <a href="../start.html">
+            
+                    
+                    Getting Started
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Features
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.1" data-path="walk.html">
+            
+                <a href="walk.html">
+            
+                    
+                    Walk a directory
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="2.1.2" data-path="flatten.html">
+            
+                <a href="flatten.html">
+            
+                    
+                    Flatten a directory
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="../api.html">
+            
+                <a href="../api.html">
+            
+                    
+                    API Reference
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.1" data-path="../api.html">
+            
+                <a href="../api.html#module_dir__walk">
+            
+                    
+                    walk
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2" data-path="../api.html">
+            
+                <a href="../api.html#module_dir__walkSync">
+            
+                    
+                    walkSync
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.3" data-path="../api.html">
+            
+                <a href="../api.html#module_dir__flatten">
+            
+                    
+                    flatten
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.4" data-path="../api.html">
+            
+                <a href="../api.html#module_dir__flattenSync">
+            
+                    
+                    flattenSync
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.5" data-path="../api.html">
+            
+                <a href="../api.html#module_dir__FSItem">
+            
+                    
+                    FSItem
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.6" data-path="../api.html">
+            
+                <a href="../api.html#module_dir__RegExpsOrFunction">
+            
+                    
+                    RegExpsOrFunction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.7" data-path="../api.html">
+            
+                <a href="../api.html#module_dir__StringOrBoolean">
+            
+                    
+                    StringOrBoolean
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="../dist.html">
+            
+                <a href="../dist.html">
+            
+                    
+                    Distribution
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="../history.html">
+            
+                <a href="../history.html">
+            
+                    
+                    Revision History
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="../LICENSE.html">
+            
+                <a href="../LICENSE.html">
+            
+                    
+                    MIT License
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Flatten a directory</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="flatten-a-directory">Flatten a directory</h1>
+<p>Walk (AKA. <code>traverse</code>) a directory and get all the stuffs inside it.</p>
+<p>The <code>flatten</code> feature is very similar to the <a href="walk.html"><code>Walk a directory</code></a>, except that it returns a flat array instead of a json object.</p>
+<p>This feature can be accomplished through the <a href="../api.html#module_dir__flatten"><code>flatten()</code></a> function.</p>
+<pre><code class="lang-js"><span class="hljs-keyword">const</span> {flatten} = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;@aotu/fs&apos;</span>)
+
+<span class="hljs-keyword">let</span> anArray = <span class="hljs-keyword">await</span> flatten(<span class="hljs-string">&apos;path/to/your/dir&apos;</span>, {
+  includes: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">path0</span>) </span>{ <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span> },
+  excludes: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">path0</span>) </span>{ <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span> },
+  onStep: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">item</span>) </span>{ <span class="hljs-keyword">return</span> item },
+  ignoreNotAccessible: <span class="hljs-literal">true</span>,
+  normalizePath: <span class="hljs-literal">true</span>,
+  maxLevel: <span class="hljs-number">-1</span>,
+  gitignore: <span class="hljs-string">&apos;.gitignore&apos;</span>,
+  extensions: <span class="hljs-literal">null</span>
+})
+</code></pre>
+<h2 id="the-array-representation-of-the-target-directory">The array representation of the target directory</h2>
+<p>The <code>flatten</code> return a flat array instead of a json object.</p>
+<pre><code class="lang-json">[
+  {
+    <span class="hljs-string">&quot;name&quot;</span>: <span class="hljs-string">&quot;dir&quot;</span>,
+    <span class="hljs-string">&quot;path&quot;</span>: <span class="hljs-string">&quot;path/to/your/dir&quot;</span>,
+    <span class="hljs-string">&quot;level&quot;</span>: <span class="hljs-number">0</span>,
+    <span class="hljs-string">&quot;size&quot;</span>: <span class="hljs-number">1244</span>,
+    <span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;directory&quot;</span>
+  },
+  {
+    <span class="hljs-string">&quot;name&quot;</span>: <span class="hljs-string">&quot;subdir&quot;</span>,
+    <span class="hljs-string">&quot;path&quot;</span>: <span class="hljs-string">&quot;path/to/your/dir/subdir&quot;</span>,
+    <span class="hljs-string">&quot;level&quot;</span>: <span class="hljs-number">1</span>,
+    <span class="hljs-string">&quot;size&quot;</span>: <span class="hljs-number">445</span>,
+    <span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;directory&quot;</span>
+  },
+  {
+    <span class="hljs-string">&quot;name&quot;</span>: <span class="hljs-string">&quot;readme.md&quot;</span>,
+    <span class="hljs-string">&quot;path&quot;</span>: <span class="hljs-string">&quot;path/to/your/dir/readme.md&quot;</span>,
+    <span class="hljs-string">&quot;level&quot;</span>: <span class="hljs-number">1</span>,
+    <span class="hljs-string">&quot;size&quot;</span>: <span class="hljs-number">878</span>,
+    <span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;file&quot;</span>,
+    <span class="hljs-string">&quot;extension&quot;</span>: <span class="hljs-string">&quot;.md&quot;</span>
+  }
+]
+</code></pre>
+<h2 id="the-synchronous-version">The synchronous version</h2>
+<p>The <a href="../api.html#module_dir__flattenSync"><code>flattenSync()</code></a> has the same function as the <a href="../api.html#module_dir__flatten"><code>flatten()</code></a>, except that it&apos;s synchronous.</p>
+<p>Take a look at the <a href="../api.html"><code>API Reference</code></a> for the complete details of the <code>flatten</code> feature.</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="walk.html" class="navigation navigation-prev " aria-label="Previous page: Walk a directory">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="../api.html" class="navigation navigation-next " aria-label="Next page: API Reference">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Flatten a directory","level":"2.1.2","depth":2,"next":{"title":"API Reference","level":"3.1","depth":1,"path":"api.md","ref":"api.md","articles":[{"title":"walk","level":"3.1.1","depth":2,"anchor":"#module_dir__walk","path":"api.md","ref":"api.md#module_dir__walk","articles":[]},{"title":"walkSync","level":"3.1.2","depth":2,"anchor":"#module_dir__walkSync","path":"api.md","ref":"api.md#module_dir__walkSync","articles":[]},{"title":"flatten","level":"3.1.3","depth":2,"anchor":"#module_dir__flatten","path":"api.md","ref":"api.md#module_dir__flatten","articles":[]},{"title":"flattenSync","level":"3.1.4","depth":2,"anchor":"#module_dir__flattenSync","path":"api.md","ref":"api.md#module_dir__flattenSync","articles":[]},{"title":"FSItem","level":"3.1.5","depth":2,"anchor":"#module_dir__FSItem","path":"api.md","ref":"api.md#module_dir__FSItem","articles":[]},{"title":"RegExpsOrFunction","level":"3.1.6","depth":2,"anchor":"#module_dir__RegExpsOrFunction","path":"api.md","ref":"api.md#module_dir__RegExpsOrFunction","articles":[]},{"title":"StringOrBoolean","level":"3.1.7","depth":2,"anchor":"#module_dir__StringOrBoolean","path":"api.md","ref":"api.md#module_dir__StringOrBoolean","articles":[]}]},"previous":{"title":"Walk a directory","level":"2.1.1","depth":2,"path":"features/walk.md","ref":"features/walk.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","-livereload","toolbar"],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"toolbar":{"buttons":[{"label":"GitHub","icon":"fa fa-github","url":"https://github.com/o2team/fs"},{"label":"NPM","icon":"fa fa-bullseye","url":"https://www.npmjs.com/package/@aotu~fs"}]},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Mamboer <mamboer@gmail.com> (https://github.com/mamboer)","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"intro.md","glossary":"GLOSSARY.md","summary":"toc.md"},"variables":{"guide":{"devGuide":"[**Dev Guide**](/index.html)","fnWalk":"[`Walk a directory`](/features/walk.md)","fnFlatten":"[`Flatten a directory`](/features/flatten.md)","features":"[`Features`](/features/README.md)","dist":"[`Distribution`](/dist.md)","history":"[`Revision History`](/history.md)","LICENSE":"[`MIT License`](/LICENSE.md)","start":"[`Getting Started`](/start.md)"},"api":{"ref":"[`API Reference`](/api.md)","walk":"[`walk()`](/api.md#module_dir__walk)","walkSync":"[`walkSync()`](/api.md#module_dir__walkSync)","flatten":"[`flatten()`](/api.md#module_dir__flatten)","flattenSync":"[`flattenSync()`](/api.md#module_dir__flattenSync)"}},"title":"@aotu/fs","gitbook":"3.2.3","description":"Some Useful File System Utilities"},"file":{"path":"features/flatten.md","mtime":"2019-04-12T16:09:39.017Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-04-12T16:11:08.638Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-toolbar/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
