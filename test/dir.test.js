@@ -88,8 +88,8 @@ test('walk: Can set the ignoreNotAccessible option to true', async t => {
 })
 
 test.failing('walk: Can set the ignoreNotAccessible option to false', async t => {
-  let errorPromise = Promise.reject(dir.walk('invalid/dir', {ignoreNotAccessible: false}))
-  let error = await t.throws(errorPromise)
+  let errorPromise = dir.walk('invalid/dir', {ignoreNotAccessible: false})
+  let error = await t.throwsAsync(errorPromise)
   t.is(error.code, 'ENOENT')
   t.fail()
 })

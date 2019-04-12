@@ -5,6 +5,7 @@
 
 const ignore =  require('ignore')
 const findUp = require('find-up')
+const path = require('path')
 const {existsSync, readFileSync} = require('fs-extra')
 const {split, map, filter, isString, some} = require('lodash')
 
@@ -47,7 +48,7 @@ class Ignore {
    */
   isIgnore (str) {
     if (!this.ig) return false
-    return this.ig.ignores(str)
+    return this.ig.ignores(path.relative('/',str))
   }
   /**
    * Reset cache of the ignore file
